@@ -1,0 +1,184 @@
+{
+  "model": {
+    "dimensions": {
+      "date": {
+        "dimensionType": "datetime",
+        "primaryKey": [
+          "Vuosi",
+          "AjoPvm"
+        ],
+        "attributes": {
+          "Vuosi": {
+            "source": "Vuosi",
+            "title": "Vuosi"
+          },
+          "AjoPvm": {
+            "source": "AjoPvm",
+            "title": "AjoPvm"
+          }
+        }
+      },
+      "economic-classification": {
+        "dimensionType": "classification",
+        "primaryKey": [
+          "Tililuokka",
+          "Tiliryhma",
+          "Tililaji",
+          "Lkpt_Tunnus"
+        ],
+        "attributes": {
+          "Tililuokka": {
+            "source": "Tililuokka",
+            "title": "Tililuokka"
+          },
+          "Tiliryhma": {
+            "source": "Tiliryhma",
+            "title": "Tiliryhma",
+            "parent": "Tililuokka"
+          },
+          "Tililaji": {
+            "source": "Tililaji",
+            "title": "Tililaji",
+            "parent": "Tiliryhma"
+          },
+          "Lkpt_Tunnus": {
+            "source": "Lkpt Tunnus",
+            "title": "Lkpt Tunnus",
+            "parent": "Tililaji"
+          }
+        },
+        "classificationType": "economic"
+      },
+      "unknown": {
+        "dimensionType": "other",
+        "primaryKey": [
+          "TiedonTuottaja"
+        ],
+        "attributes": {
+          "TiedonTuottaja": {
+            "source": "TiedonTuottaja",
+            "title": "TiedonTuottaja"
+          }
+        }
+      }
+    },
+    "measures": {
+      "Loppusaldo": {
+        "source": "Loppusaldo",
+        "title": "Loppusaldo",
+        "currency": "EUR",
+        "direction": "expenditure",
+        "phase": "approved"
+      }
+    }
+  },
+  "regionCode": "eu",
+  "countryCode": "FI",
+  "title": "Toiminnan kulut",
+  "name": "toiminnan-kulut",
+  "description": "Finnish Government Expenditure 2002-2015\nSource: http://netra.fi/avoin%20data/",
+  "resources": [
+    {
+      "name": "toiminnan-kulut-fi-2",
+      "format": "csv",
+      "path": "toiminnan-kulut-fi-2.csv",
+      "mediatype": "text/csv",
+      "bytes": 106581571,
+      "dialect": {
+        "csvddfVersion": 1,
+        "delimiter": "\t",
+        "lineTerminator": "\n"
+      },
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "title": "Vuosi",
+            "name": "Vuosi",
+            "slug": "Vuosi",
+            "type": "integer",
+            "format": "default",
+            "osType": "date:fiscal-year",
+            "conceptType": "date"
+          },
+          {
+            "title": "Tililuokka",
+            "name": "Tililuokka",
+            "slug": "Tililuokka",
+            "type": "string",
+            "format": "default",
+            "osType": "economic-classification:generic:level1:code:full",
+            "conceptType": "economic-classification"
+          },
+          {
+            "title": "Tiliryhma",
+            "name": "Tiliryhma",
+            "slug": "Tiliryhma",
+            "type": "string",
+            "format": "default",
+            "osType": "economic-classification:generic:level2:code:full",
+            "conceptType": "economic-classification"
+          },
+          {
+            "title": "Tililaji",
+            "name": "Tililaji",
+            "slug": "Tililaji",
+            "type": "string",
+            "format": "default",
+            "osType": "economic-classification:generic:level3:code:full",
+            "conceptType": "economic-classification"
+          },
+          {
+            "title": "Lkpt Tunnus",
+            "name": "Lkpt Tunnus",
+            "slug": "Lkpt_Tunnus",
+            "type": "string",
+            "format": "default",
+            "osType": "economic-classification:generic:level4:code:full",
+            "conceptType": "economic-classification"
+          },
+          {
+            "title": "Loppusaldo",
+            "name": "Loppusaldo",
+            "slug": "Loppusaldo",
+            "type": "number",
+            "format": "default",
+            "osType": "value",
+            "conceptType": "value",
+            "decimalChar": ",",
+            "groupChar": " "
+          },
+          {
+            "title": "AjoPvm",
+            "name": "AjoPvm",
+            "slug": "AjoPvm",
+            "type": "date",
+            "format": "fmt:%Y%m%d",
+            "osType": "date:generic",
+            "conceptType": "date"
+          },
+          {
+            "title": "TiedonTuottaja",
+            "name": "TiedonTuottaja",
+            "slug": "TiedonTuottaja",
+            "type": "string",
+            "format": "default",
+            "osType": "unknown:string",
+            "conceptType": "unknown"
+          }
+        ],
+        "primaryKey": [
+          "Vuosi",
+          "Tililuokka",
+          "Tiliryhma",
+          "Tililaji",
+          "Lkpt Tunnus",
+          "AjoPvm"
+        ]
+      }
+    }
+  ],
+  "@context": "http://schemas.frictionlessdata.io/fiscal-data-package.jsonld",
+  "owner": "bca9b061df92da72bdb40eda58f5ec11",
+  "author": "Joonas Pesonen <jpesone@gmail.com>"
+}
