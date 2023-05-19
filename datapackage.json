@@ -81,7 +81,7 @@
     {
       "name": "toiminnan-kulut-fi-2",
       "format": "csv",
-      "path": "https://storage.openspending.org/toiminnan-kulut-fi-2.csv",
+      "path": "https://storage.openspending.org/toiminnan-kulut/toiminnan-kulut-fi-2.csv",
       "mediatype": "text/csv",
       "bytes": 106581571,
       "dialect": {
