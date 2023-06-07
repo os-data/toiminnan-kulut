@@ -180,5 +180,9 @@
   ],
   "@context": "http://schemas.frictionlessdata.io/fiscal-data-package.jsonld",
   "owner": "bca9b061df92da72bdb40eda58f5ec11",
+  "fiscalPeriod": {
+    "start": "1998-01-01",
+    "end": "2016-12-31"
+  },
   "author": "Joonas Pesonen <jpesone@gmail.com>"
 }
